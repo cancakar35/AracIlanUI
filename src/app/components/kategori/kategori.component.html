@@ -3,8 +3,13 @@
         <li>Tüm İlanlar</li>
         <li *ngFor="let kategori of kategoriler">{{kategori.name}}</li>
     </ul>
-    <div *ngIf="!is_completed" class="d-flex justify-content-center">
-        <div class="spinner-grow text-dark" role="status">
-        </div>
+    <div *ngIf="!is_completed">
+        <p class="placeholder-glow px-2">
+            <span class="placeholder placeholder-lg w-75 bg-secondary my-2"></span>
+            <span class="placeholder placeholder-lg w-75 bg-secondary my-2"></span>
+            <span class="placeholder placeholder-lg w-50 bg-secondary my-2"></span>
+            <span class="placeholder placeholder-lg w-100 bg-secondary my-2"></span>
+            <span class="placeholder placeholder-lg w-25 bg-secondary my-2"></span>
+        </p>
     </div>
 </div>

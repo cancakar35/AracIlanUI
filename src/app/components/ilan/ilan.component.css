@@ -1,0 +1,81 @@
+.ilan-container, .ilan-placeholder-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ilan-card {
+    cursor: pointer;
+    user-select: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 6px;
+    width: 250px;
+    height: 300px;
+    padding: 8px;
+    color: #333;
+}
+
+.ilan-card-image {
+    overflow: hidden;
+}
+
+.ilan-card-image > img {
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.ilan-card-title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ilan-card-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.ilan-card-fiyat {
+    width: 100%;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6F61C0;
+}
+
+.ilan-loading-placeholder {
+    cursor: wait;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 6px;
+    width: 250px;
+    height: 300px;
+    padding: 8px;
+}
+
+.ilan-placeholder-card-image {
+    width: 100%;
+    height: 70%;
+    background-color: #e8e8e8;
+    animation: placeholder-glow 2s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.ilan-placeholder-card-text {
+    width: 100%;
+    height: 20px;
+    background-color: #e8e8e8;
+    animation: placeholder-glow 2s ease-in-out infinite;
+    margin-bottom: 5px;
+}
+
+@keyframes placeholder-glow{
+    50%{
+        opacity: 0.2;
+    }
+}

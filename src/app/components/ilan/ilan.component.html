@@ -1,0 +1,30 @@
+<div *ngIf="is_completed" class="ilan-container">
+    <div *ngFor="let ilan of ilanlar" class="ilan-card">
+        <div class="ilan-card-image">
+            <img [src]="getImageURL(ilan.resimler[0])" [alt]="ilan.arac.marka + ilan.arac.model">
+        </div>
+        <div class="ilan-card-info">
+            <span>{{ilan.ilan.il}}</span>
+            <span>{{ilan.arac.uretimYili}}</span>
+        </div>
+        <div class="ilan-card-title">{{ilan.arac.marka}} {{ilan.arac.model}}</div>
+        <div class="ilan-card-fiyat">{{ilan.arac.fiyat | currency:"TRY":"":"1.2-2"}} TL</div>
+    </div>
+</div>
+<div *ngIf="!is_completed" class="ilan-placeholder-container">
+    <div class="ilan-loading-placeholder">
+        <div class="ilan-placeholder-card-image"></div>
+        <div class="ilan-placeholder-card-text"></div>
+        <div class="ilan-placeholder-card-text w-25"></div>
+    </div>
+    <div class="ilan-loading-placeholder">
+        <div class="ilan-placeholder-card-image"></div>
+        <div class="ilan-placeholder-card-text"></div>
+        <div class="ilan-placeholder-card-text w-25"></div>
+    </div>
+    <div class="ilan-loading-placeholder">
+        <div class="ilan-placeholder-card-image"></div>
+        <div class="ilan-placeholder-card-text"></div>
+        <div class="ilan-placeholder-card-text w-25"></div>
+    </div>
+</div>

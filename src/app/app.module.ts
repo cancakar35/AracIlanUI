@@ -9,12 +9,14 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
+import { IlanComponent } from './components/ilan/ilan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KategoriComponent,
-    HomeComponent
+    HomeComponent,
+    IlanComponent
   ],
   imports: [
     BrowserModule,
