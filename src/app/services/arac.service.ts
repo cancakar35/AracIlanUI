@@ -8,7 +8,7 @@ import { AracDetail } from '../models/arac-detail';
   providedIn: 'root'
 })
 export class AracService {
-  api_url = environment.apiURL + "Arac/";
+  private api_url = environment.apiURL + "Arac/";
   constructor(private httpClient:HttpClient) { }
   
   getAll():Observable<AracDetail[]>{

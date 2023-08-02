@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class KategoriService {
-  api_url = environment.apiURL + "Kategori/";
+  private api_url = environment.apiURL + "Kategori/";
   constructor(private httpClient:HttpClient) { }
 
   getAll():Observable<Kategori[]>{

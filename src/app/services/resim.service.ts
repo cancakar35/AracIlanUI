@@ -8,7 +8,7 @@ import { AracResim } from '../models/arac-resim';
   providedIn: 'root'
 })
 export class ResimService {
-  api_url = environment.apiURL + "resimler/";
+  private api_url = environment.apiURL + "resimler/";
   constructor(private httpClient:HttpClient) { }
 
   getAll() : Observable<AracResim[]>{

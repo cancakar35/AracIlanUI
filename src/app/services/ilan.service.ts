@@ -11,7 +11,7 @@ import { Arac } from '../models/arac';
   providedIn: 'root'
 })
 export class IlanService {
-  api_url = environment.apiURL + "Ilan/";
+  private api_url = environment.apiURL + "Ilan/";
   constructor(private httpClient:HttpClient) { }
 
   getAll() : Observable<IlanResponseModel[]>{

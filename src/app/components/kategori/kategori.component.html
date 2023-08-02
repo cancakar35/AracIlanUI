@@ -1,0 +1,10 @@
+<div class="kategori-container">
+    <ul *ngIf="is_completed" class="kategori-list">
+        <li>Tüm İlanlar</li>
+        <li *ngFor="let kategori of kategoriler">{{kategori.name}}</li>
+    </ul>
+    <div *ngIf="!is_completed" class="d-flex justify-content-center">
+        <div class="spinner-grow text-dark" role="status">
+        </div>
+    </div>
+</div>

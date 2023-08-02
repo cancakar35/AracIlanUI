@@ -1,0 +1,41 @@
+.kategori-container {
+    width: 200px;
+    height: 400px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow-y: auto;
+}
+
+.kategori-container::-webkit-scrollbar{
+    width: 8px;
+}
+
+.kategori-container::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+    background-color: rgba(153, 153, 153, 0.5);
+}
+
+.kategori-container::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(102, 102, 102, 1);
+}
+
+.kategori-container::-webkit-scrollbar-track{
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+.kategori-list {
+    padding: 8px 0;
+    list-style: none;
+}
+
+.kategori-list > li {
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+}
+
+.kategori-list > li:hover{
+    background-color: #fafafa;
+}
