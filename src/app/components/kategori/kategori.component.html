@@ -1,7 +1,7 @@
 <div class="kategori-container">
     <ul *ngIf="is_completed" class="kategori-list">
-        <li>Tüm İlanlar</li>
-        <li *ngFor="let kategori of kategoriler">{{kategori.name}}</li>
+        <li routerLink="/ilanlar">Tüm İlanlar</li>
+        <li routerLink="/ilanlar" [queryParams]="{kategori:kategori.id}" *ngFor="let kategori of kategoriler">{{kategori.name}}</li>
     </ul>
     <div *ngIf="!is_completed">
         <p class="placeholder-glow px-2">

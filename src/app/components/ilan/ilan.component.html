@@ -1,4 +1,7 @@
 <div *ngIf="is_completed" class="ilan-container">
+    <ng-container *ngIf="!ilanlar.length">
+        <div class="fs-2 text-center">İlan Bulunamadı</div>
+    </ng-container>
     <div *ngFor="let ilan of ilanlar" class="ilan-card">
         <div class="ilan-card-image">
             <img [src]="getImageURL(ilan.resimler[0])" [alt]="ilan.arac.marka + ilan.arac.model">

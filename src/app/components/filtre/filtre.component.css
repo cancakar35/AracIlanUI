@@ -1,0 +1,48 @@
+.filtre-collapse {
+    user-select: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.collapse-filtre-list {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: 500;
+    height: 32px;
+    width: 100%;
+}
+
+.collapse-filtre-list:hover {
+    background-color: #fafafa;
+}
+
+.filtre-list {
+    display: none;
+    padding: 8px 12px;
+    height: fit-content;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.filtre-list::-webkit-scrollbar{
+    width: 8px;
+}
+
+.filtre-list::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+    background-color: rgba(153, 153, 153, 0.5);
+}
+
+.filtre-list::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(102, 102, 102, 1);
+}
+
+.filtre-list::-webkit-scrollbar-track{
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
