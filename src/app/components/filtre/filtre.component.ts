@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CekisTipi } from 'src/app/models/cekis-tipi';
 import { KasaTipi } from 'src/app/models/kasa-tipi';
@@ -25,19 +27,20 @@ export class FiltreComponent implements OnInit{
   vitesler:VitesTipi[] = [];
   yakitlar:YakitTipi[] = [];
   markalar:Marka[] = [];
-  selectedMarka:string[] = [];
-  selectedCekis:string[] = [];
-  selectedKasa:string[] = [];
-  selectedRenk:string[] = [];
-  selectedVites:string[] = [];
-  selectedYakit:string[] = [];
+  seciliYakitTipleri: { [key: number]: boolean } = {};
+  seciliCekisTipleri: { [key: number]: boolean } = {};
+  seciliVitesTipleri: { [key: number]: boolean } = {};
+  seciliKasaTipleri: { [key: number]: boolean } = {};
+  seciliRenkler: { [key: number]: boolean } = {};
+  seciliMarkalar: { [key: number]: boolean } = {};
   constructor(private cekisService:CekisTipiService,
     private kasaService:KasaTipiService,
     private renkService:RenkService,
     private vitesService:VitesTipiService,
     private yakitService:YakitTipiService,
     private markaService:MarkaService,
-    private toastr:ToastrService){}
+    private toastr:ToastrService,
+    private router:Router){}
 
   ngOnInit(): void {
     this.getCekisTipleri();
@@ -98,5 +101,41 @@ export class FiltreComponent implements OnInit{
     else{
       element.style.display = "block";
     }
+  }
+
+  submitFilter(){
+    console.log();
+  }
+
+  filtrele() {
+    const seciliYakitIds = this.getFiltreIds(this.seciliYakitTipleri);
+    const seciliCekisTipiIds = this.getFiltreIds(this.seciliCekisTipleri);
+    const seciliVitesTipiIds = this.getFiltreIds(this.seciliVitesTipleri);
+    const seciliKasaTipiIds = this.getFiltreIds(this.seciliKasaTipleri);
+    const seciliRenkIds = this.getFiltreIds(this.seciliRenkler);
+    const seciliMarkaIds = this.getFiltreIds(this.seciliMarkalar);
+
+    this.router.navigate(["/ilanlar"],{
+      queryParams: {
+        yakitTipiId: seciliYakitIds,
+        cekisTipiId: seciliCekisTipiIds,
+        vitesTipiId: seciliVitesTipiIds,
+        kasaTipiId: seciliKasaTipiIds,
+        renkId: seciliRenkIds,
+        markaId: seciliMarkaIds,
+      },
+      queryParamsHandling:"merge",
+      replaceUrl:true
+    });
+  }
+
+  getFiltreIds(seciliFiltreler: { [key: number]: boolean }): string[]{
+    const seciliIds: string[] = [];
+    for (const id in seciliFiltreler) {
+      if (seciliFiltreler[id]) {
+        seciliIds.push(id);
+      }
+    }
+    return seciliIds;
   }
 }

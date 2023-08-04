@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { IlanDetail } from '../models/ilan-detail';
 import { Observable } from 'rxjs';
 import { IlanResponseModel } from '../models/ilan-response-model';
 import { AddIlanDTO } from '../models/add-ilan-dto';
@@ -18,31 +17,8 @@ export class IlanService {
     return this.httpClient.get<IlanResponseModel[]>(this.api_url+"all");
   }
 
-  gettAllByFilter(markaId:string[],renkId:string[], yakitTipiId:string[],
-    vitesTipiId:string[],kasaTipiId:string[],cekisTipiId:string[]) : Observable<IlanResponseModel[]>{
-      let queryParam = "?";
-      for (const id of markaId) {
-        queryParam += "markaId="+id+"&";
-      }
-      for (const id of renkId) {
-        queryParam += "renkId="+id+"&";
-      }
-      for (const id of yakitTipiId) {
-        queryParam += "yakitTipiId="+id+"&";
-      }
-      for (const id of vitesTipiId) {
-        queryParam += "vitesTipiId="+id+"&";
-      }
-      for (const id of kasaTipiId) {
-        queryParam += "kasaTipiId="+id+"&";
-      }
-      for (const id of cekisTipiId) {
-        queryParam += "cekisTipiId="+id+"&";
-      }
-      if (queryParam=="?"){
-        return this.getAll();
-      }
-      return this.httpClient.get<IlanResponseModel[]>(this.api_url+"filtre"+queryParam);
+  gettAllByFilter(queryParam:HttpParams) : Observable<IlanResponseModel[]>{
+      return this.httpClient.get<IlanResponseModel[]>(this.api_url+"filtre", {params:queryParam});
     }
 
   getById(id:number|string) : Observable<IlanResponseModel>{

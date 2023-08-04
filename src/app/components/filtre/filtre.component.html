@@ -1,11 +1,11 @@
 <div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('markaFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('markaFilterList')" class="collapse-filtre-list">
             Marka
         </button>
         <div class="filtre-list" id="markaFilterList">
             <div *ngFor="let marka of markalar" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{marka.id}}" id="marka-{{marka.id}}">
+                <input [(ngModel)]="seciliMarkalar[marka.id]" class="form-check-input" type="checkbox" value="{{marka.id}}" id="marka-{{marka.id}}">
                 <label class="form-check-label" for="marka-{{marka.id}}">
                     {{marka.name}}
                 </label>
@@ -13,12 +13,12 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('renkFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('renkFilterList')" class="collapse-filtre-list">
             Renk
         </button>
         <div class="filtre-list" id="renkFilterList">
             <div *ngFor="let renk of renkler" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{renk.id}}" id="renk-{{renk.name}}">
+                <input [(ngModel)]="seciliRenkler[renk.id]" class="form-check-input" type="checkbox" value="{{renk.id}}" id="renk-{{renk.name}}">
                 <label class="form-check-label" for="renk-{{renk.name}}">
                     {{renk.name}}
                 </label>
@@ -26,12 +26,12 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('yakitFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('yakitFilterList')" class="collapse-filtre-list">
             Yakıt Tipi
         </button>
         <div class="filtre-list" id="yakitFilterList">
             <div *ngFor="let yakit of yakitlar" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{yakit.id}}" id="yakit-{{yakit.name}}">
+                <input [(ngModel)]="seciliYakitTipleri[yakit.id]" class="form-check-input" type="checkbox" value="{{yakit.id}}" id="yakit-{{yakit.name}}">
                 <label class="form-check-label" for="yakit-{{yakit.name}}">
                     {{yakit.name}}
                 </label>
@@ -39,12 +39,12 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('vitesFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('vitesFilterList')" class="collapse-filtre-list">
             Vites Tipi
         </button>
         <div class="filtre-list" id="vitesFilterList">
             <div *ngFor="let vites of vitesler" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{vites.id}}" id="vites-{{vites.name}}">
+                <input [(ngModel)]="seciliVitesTipleri[vites.id]" class="form-check-input" type="checkbox" value="{{vites.id}}" id="vites-{{vites.name}}">
                 <label class="form-check-label" for="vites-{{vites.name}}">
                     {{vites.name}}
                 </label>
@@ -52,12 +52,12 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('kasaFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('kasaFilterList')" class="collapse-filtre-list">
             Kasa Tipi
         </button>
         <div class="filtre-list" id="kasaFilterList">
             <div *ngFor="let kasa of kasalar" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{kasa.id}}" id="kasa-{{kasa.name}}">
+                <input [(ngModel)]="seciliKasaTipleri[kasa.id]" class="form-check-input" type="checkbox" value="{{kasa.id}}" id="kasa-{{kasa.name}}">
                 <label class="form-check-label" for="kasa-{{kasa.name}}">
                     {{kasa.name}}
                 </label>
@@ -65,12 +65,12 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button (click)="changeCollapseVisibility('cekisFilterList')" class="collapse-filtre-list">
+        <button type="button" (click)="changeCollapseVisibility('cekisFilterList')" class="collapse-filtre-list">
             Çekiş Tipi
         </button>
         <div class="filtre-list" id="cekisFilterList">
             <div *ngFor="let cekis of cekisler" class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{cekis.id}}" id="cekis-{{cekis.name}}">
+                <input [(ngModel)]="seciliCekisTipleri[cekis.id]" class="form-check-input" type="checkbox" value="{{cekis.id}}" id="cekis-{{cekis.name}}">
                 <label class="form-check-label" for="cekis-{{cekis.name}}">
                     {{cekis.name}}
                 </label>
@@ -78,6 +78,6 @@
         </div>
     </div>
     <div class="filtre-collapse">
-        <button class="btn btn-primary w-100">Ara</button>
+        <button (click)="filtrele()" type="button" class="btn btn-primary w-100">Ara</button>
     </div>
 </div>
