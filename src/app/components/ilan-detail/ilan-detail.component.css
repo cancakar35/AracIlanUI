@@ -142,3 +142,17 @@
     text-decoration: none;
     color: #6F61C0;
 }
+
+.ilan-detail-description-header {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.ilan-detail-description-body {
+    border: 1px solid #e5e5e5;
+    width: 100%;
+    height: fit-content;
+    min-height: 200px;
+    padding: 20px;
+}
