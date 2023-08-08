@@ -11,37 +11,39 @@ import { environment } from 'src/environments/environment.development';
   templateUrl: './ilan-detail.component.html',
   styleUrls: ['./ilan-detail.component.css']
 })
-export class IlanDetailComponent implements OnInit{
-  ilan!:IlanResponseModel;
+export class IlanDetailComponent implements OnInit {
+  ilan!: IlanResponseModel;
+  is_completed: boolean = false;
 
-  constructor(private ilanService:IlanService,
-    private activatedRoute:ActivatedRoute,
-    private router:Router,
-    private toastr:ToastrService){}
+  constructor(private ilanService: IlanService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params=>{
-      if (params.has("ilanId")){
+    this.activatedRoute.paramMap.subscribe(params => {
+      if (params.has("ilanId")) {
         this.getIlanById(params.get("ilanId")!);
       }
-      else{
+      else {
         this.router.navigate([""]);
       }
     })
   }
 
-  getIlanById(id:string){
+  getIlanById(id: string) {
     this.ilanService.getById(id).subscribe({
-      next: response=>this.ilan = response,
+      next: response => this.ilan = response,
       error: () => {
         this.toastr.error("İlan Yüklenemedi!", "HATA");
         this.router.navigate([""]);
-      }
+      },
+      complete: () => this.is_completed = true
     });
   }
 
-  getImageURL(imageUrl:string):string {
-    return environment.images+imageUrl;
+  getImageURL(imageUrl: string): string {
+    return environment.images + imageUrl;
   }
 
 
