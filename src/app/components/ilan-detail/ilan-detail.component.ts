@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment.development';
 export class IlanDetailComponent implements OnInit {
   ilan!: IlanResponseModel;
   is_completed: boolean = false;
+  current_image_index : number = 0;
 
   constructor(private ilanService: IlanService,
     private activatedRoute: ActivatedRoute,
@@ -43,8 +44,28 @@ export class IlanDetailComponent implements OnInit {
   }
 
   getImageURL(imageUrl: string): string {
+    const resimler = this.ilan.resimler;
     return environment.images + imageUrl;
   }
 
+  nextImage() {
+    const resimler = this.ilan.resimler;
+    if (this.current_image_index+1 <= resimler.length-1){
+      this.current_image_index += 1;
+    }
+  }
 
+  previousImage() {
+    const resimler = this.ilan.resimler;
+    if (this.current_image_index != 0){
+      this.current_image_index -= 1;
+    }
+  }
+
+  changeImageByIndex(index:number){
+    const resimler = this.ilan.resimler;
+    if (index >= 0 && index <= resimler.length-1){
+      this.current_image_index = index;
+    }
+  }
 }

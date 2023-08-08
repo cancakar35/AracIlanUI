@@ -53,10 +53,18 @@
     gap: 10px;
 }
 
+.car-gallery-image-list > .small-image {
+    cursor: pointer;
+}
+
 .car-gallery-image-list > .small-image > img {
     width: 100px;
     height: 100px;
     object-fit: scale-down;
+}
+
+.car-gallery-image-list > .small-image.selected {
+    border: 2px solid #6F61C0;
 }
 
 .ilan-detail-list {

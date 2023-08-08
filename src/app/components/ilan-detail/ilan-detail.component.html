@@ -3,13 +3,13 @@
         <div class="col-md-6">
             <div class="car-gallery">
                 <div class="selected-image">
-                    <img [src]="getImageURL(ilan.resimler[0])" [alt]="ilan.arac.marka + ilan.arac.model" />
+                    <img [src]="getImageURL(ilan.resimler[current_image_index])" [alt]="ilan.arac.marka + ilan.arac.model" />
                 </div>
-                <button type="button" class="prev-image">&#10094;</button>
-                <button type="button" class="next-image">&#10095;</button>
+                <button (click)="previousImage()" type="button" class="prev-image">&#10094;</button>
+                <button (click)="nextImage()" type="button" class="next-image">&#10095;</button>
             </div>
             <div class="car-gallery-image-list">
-                <div *ngFor="let resim of ilan.resimler" class="small-image">
+                <div (click)="changeImageByIndex(i)" *ngFor="let resim of ilan.resimler; let i=index" [class]="i==current_image_index?'small-image selected':'small-image'">
                     <img [src]="getImageURL(resim)" alt="Kücük arac resmi" />
                 </div>
             </div>
