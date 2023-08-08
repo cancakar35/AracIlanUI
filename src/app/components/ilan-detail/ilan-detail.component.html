@@ -1,0 +1,86 @@
+<div class="row mt-5">
+  <div class="col-md-6">
+    <div class="car-gallery">
+        <div class="selected-image">
+            <img [src]="getImageURL(ilan.resimler[0])" [alt]="ilan.arac.marka+ilan.arac.model">
+        </div>
+        <button type="button" class="prev-image">&#10094;</button>
+        <button type="button" class="next-image">&#10095;</button>
+    </div>
+    <div class="car-gallery-image-list">
+        <div *ngFor="let resim of ilan.resimler" class="small-image">
+            <img [src]="getImageURL(resim)" alt="Kücük arac resmi">
+        </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="ilan-detail-list">
+        <div class="ilan-fiyat">{{ilan.arac.fiyat | currency:"TRY":"":"1.2-2"}} TL</div>
+        <div class="ilan-address">{{ilan.ilan.il}} / {{ilan.ilan.ilce}} / {{ilan.ilan.mahalle}}</div>
+        <div class="ilan-info-list">
+            <div>
+                <span>İlan No</span>
+                <span>{{ilan.ilan.id}}</span>
+            </div>
+            <div>
+                <span>İlan Tarihi</span>
+                <span>{{ilan.ilan.tarih | date : "dd/MM/YYYY"}}</span>
+            </div>
+            <div>
+                <span>Marka</span>
+                <span>{{ilan.arac.marka}}</span>
+            </div>
+            <div *ngIf="ilan.arac.seri != ''">
+                <span>Seri</span>
+                <span>{{ilan.arac.seri}}</span>
+            </div>
+            <div>
+                <span>Model</span>
+                <span>{{ilan.arac.model}}</span>
+            </div>
+            <div>
+                <span>Yıl</span>
+                <span>{{ilan.arac.uretimYili}}</span>
+            </div>
+            <div>
+                <span>Kilometre</span>
+                <span>{{ilan.arac.kilometre}}</span>
+            </div>
+            <div>
+                <span>Vites Tipi</span>
+                <span>{{ilan.arac.vitesTipi}}</span>
+            </div>
+            <div>
+                <span>Yakıt Tipi</span>
+                <span>{{ilan.arac.yakitTipi}}</span>
+            </div>
+            <div>
+                <span>Kasa Tipi</span>
+                <span>{{ilan.arac.kasaTipi}}</span>
+            </div>
+            <div>
+                <span>Motor Hacmi</span>
+                <span>{{ilan.arac.motorHacmiCC}} cc</span>
+            </div>
+            <div>
+                <span>Motor Gücü</span>
+                <span>{{ilan.arac.motorGucuHP}} hp</span>
+            </div>
+            <div>
+                <span>Çekiş</span>
+                <span>{{ilan.arac.cekisTipi}}</span>
+            </div>
+            <div>
+                <span>Durum</span>
+                <span>{{ilan.arac.sifir ? "Sıfır" : "İkinci El"}}</span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="ilan-detail-contact">
+        <div class="contact-name">{{ilan.ilan.ad}} {{ilan.ilan.soyad}}</div>
+        <div class="contact-phone"><a href="tel:{{ilan.ilan.telefonNo}}">{{ilan.ilan.telefonNo}}</a></div>
+    </div>
+  </div>
+</div>

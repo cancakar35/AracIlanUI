@@ -1,0 +1,136 @@
+.car-gallery {
+    position: relative;
+    width: 100%;
+}
+
+.car-gallery>.selected-image>img {
+    width: 100%;
+    display: block;
+    height: 500px;
+    object-fit: contain;
+}
+
+.car-gallery>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    background: none;
+    user-select: none;
+    position: absolute;
+    z-index: 99;
+    color: #fff;
+    font-size: 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.car-gallery>button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.car-gallery>.prev-image {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.car-gallery>.next-image {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.car-gallery-image-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 5px;
+    gap: 10px;
+}
+
+.car-gallery-image-list > .small-image > img {
+    width: 100px;
+    height: 100px;
+    object-fit: scale-down;
+}
+
+.ilan-detail-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+}
+
+.ilan-detail-list > .ilan-fiyat {
+    width: 100%;
+    height: 32px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6F61C0;
+}
+
+.ilan-detail-list > .ilan-address {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.ilan-info-list > div {
+    display: flex;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.ilan-info-list > div > span {
+    width: 100%;
+    font-size: 14px;
+}
+
+.ilan-info-list > div > span:first-child {
+    font-weight: bold;
+}
+
+.ilan-detail-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #e5e5e5;
+}
+
+.ilan-detail-contact .contact-name {
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ilan-detail-contact .contact-phone {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: #fafafa;
+    width: 80%;
+    height: 44px;
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ilan-detail-contact .contact-phone > a {
+    appearance: none;
+    text-decoration: none;
+    color: #6F61C0;
+}

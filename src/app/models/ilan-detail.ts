@@ -1,4 +1,5 @@
 export interface IlanDetail {
+    id:number;
     ad:string;
     soyad:string;
     telefonNo:string;
