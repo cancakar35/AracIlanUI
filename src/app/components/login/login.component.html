@@ -4,5 +4,6 @@
         <input type="email" placeholder="Email" formControlName="email">
         <input type="password" placeholder="Parola" formControlName="password">
         <button type="button" (click)="login()">Giriş Yap</button>
+        <div>Hesabınız yok mu?, <a routerLink="/register" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Kayıt Ol</a></div>
     </form>
 </div>

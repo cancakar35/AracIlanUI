@@ -12,7 +12,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class LoginComponent implements OnInit{
   loginForm!:FormGroup;
-  navigateUrl:string = "/";
+  navigateUrl:string = "";
+  nextUrl:string|null = null;
 
   constructor(private authService:AuthService,
     private formBuilder:FormBuilder,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit{
         let newParam = params.get("next");
         if (newParam != null || newParam != ""){
           this.navigateUrl = newParam!;
+          this.nextUrl = newParam;
         }
       }
     })

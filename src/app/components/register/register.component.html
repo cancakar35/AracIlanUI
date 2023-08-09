@@ -1,1 +1,11 @@
-<p>register works!</p>
+<div class="register-form">
+    <form [formGroup]="registerForm">
+        <h2>Kayıt Ol</h2>
+        <input type="text" placeholder="Ad" formControlName="firstName">
+        <input type="text" placeholder="Soyad" formControlName="lastName">
+        <input type="email" placeholder="Email" formControlName="email">
+        <input type="password" placeholder="Parola" formControlName="password">
+        <button type="button" (click)="register()">Kayıt Ol</button>
+        <div>Zaten hesabınız varsa, <a routerLink="/login" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Giriş Yap</a></div>
+    </form>
+</div>
