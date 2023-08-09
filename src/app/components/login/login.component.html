@@ -1,0 +1,8 @@
+<div class="login-form">
+    <form [formGroup]="loginForm">
+        <h2>Giriş Yap</h2>
+        <input type="email" placeholder="Email" formControlName="email">
+        <input type="password" placeholder="Parola" formControlName="password">
+        <button type="button" (click)="login()">Giriş Yap</button>
+    </form>
+</div>
