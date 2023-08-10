@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KategoriComponent } from './components/kategori/kategori.component';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
-
-import { ToastrModule } from 'ngx-toastr';
 import { IlanComponent } from './components/ilan/ilan.component';
 import { IlanListComponent } from './components/ilan-list/ilan-list.component';
 import { FiltreComponent } from './components/filtre/filtre.component';
@@ -17,6 +15,21 @@ import { IlanDetailComponent } from './components/ilan-detail/ilan-detail.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { LocalStorageService } from "./services/local-storage.service";
+
+
+import { ToastrModule } from 'ngx-toastr';
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+
+
+export function jwtOptionsFactory(localStorageService:LocalStorageService) {
+  return {
+    tokenGetter: () => {
+      return localStorageService.getToken();
+    },
+    allowedDomains: ["example.com"],
+  }
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +51,14 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      jwtOptionsProvider:{
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [LocalStorageService]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

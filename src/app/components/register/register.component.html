@@ -26,7 +26,7 @@
                 Parola en az 8 karakter olmalıdır
             </div>
         </div>
-        <button type="button" (click)="register()">Kayıt Ol</button>
+        <button type="button" (click)="register()" [disabled]="!registerForm.dirty || !registerForm.valid || isFormDisabled">Kayıt Ol</button>
         <div>Zaten hesabınız varsa, <a routerLink="/login" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Giriş Yap</a></div>
     </form>
 </div>

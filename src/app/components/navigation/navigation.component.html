@@ -13,12 +13,36 @@
             </form>
 
             <div class="text-end">
-                <button routerLink="/login" type="button" class="btn btn-outline-light me-2">
-                    Giriş Yap
-                </button>
-                <button routerLink="/register" type="button" class="btn btn-warning">
-                    Kayıt Ol
-                </button>
+                <ng-container *ngIf="isUserAuthenticated(); else notAuthenticatedView">
+                    <div class="dropdown user-select-none" data-bs-theme="dark">
+                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li class="px-2">
+                                <div class="text-secondary text-center">Hoş Geldin</div>
+                                <div *ngIf="userInfo" class="text-white text-center">{{userInfo.Name}}</div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item btn-lg">Hesabım</button></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <button (click)="logout()" type="button" class="btn btn-outline-warning d-block w-100">
+                                    Çıkış Yap
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+                <ng-template #notAuthenticatedView>
+                    <button routerLink="/login" type="button" class="btn btn-outline-light me-2">
+                        Giriş Yap
+                    </button>
+                    <button routerLink="/register" type="button" class="btn btn-warning">
+                        Kayıt Ol
+                    </button>
+                </ng-template>
             </div>
         </div>
     </div>

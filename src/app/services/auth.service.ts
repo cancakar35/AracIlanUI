@@ -6,6 +6,8 @@ import { AuthResponse } from '../models/auth-response-model';
 import { environment } from 'src/environments/environment.development';
 import { UserRegister } from '../models/user-register';
 import { LocalStorageService } from './local-storage.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserInformation } from '../models/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ import { LocalStorageService } from './local-storage.service';
 export class AuthService {
   private api_url = environment.apiURL + "Auth/";
   
-  constructor(private httpClient:HttpClient, private localStorageService:LocalStorageService) { }
+  constructor(private httpClient:HttpClient, private localStorageService:LocalStorageService,
+    private jwtHelper:JwtHelperService) { }
 
   login(userLoginDto:UserLogin) : Observable<AuthResponse>{
     return this.httpClient.post<AuthResponse>(this.api_url+"login", userLoginDto);
@@ -28,6 +31,11 @@ export class AuthService {
   }
 
   isAuthenticated() : boolean {
-    return this.localStorageService.getToken() == null ? false : true;
+    return !this.jwtHelper.isTokenExpired(this.localStorageService.getToken());
   }
+
+  async getUserInformation(){
+    return await this.jwtHelper.decodeToken<UserInformation>();
+  }
+  
 }

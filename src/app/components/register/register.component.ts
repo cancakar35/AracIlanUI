@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit{
   registerForm!:FormGroup;
   navigateUrl:string = "/";
   nextUrl:string|null = null;
+  isFormDisabled:boolean = false;
 
   constructor(private authService:AuthService,
     private formBuilder:FormBuilder,
@@ -45,14 +46,16 @@ export class RegisterComponent implements OnInit{
   }
 
   register(){
-    if (this.registerForm.valid){
+    if (this.registerForm.valid && !this.isFormDisabled){
       this.authService.register(Object.assign({}, this.registerForm.value)).subscribe({
         next: response=>{
+          this.isFormDisabled = true;
           this.localStorageService.setToken(response.token);
           this.toastr.success("Başarıyla kayıt oldunuz", "Kayıt Başarılı");
-          this.router.navigate([this.navigateUrl]);
+          this.router.navigateByUrl(this.navigateUrl);
         },
         error: ()=>{
+          this.isFormDisabled = false;
           this.toastr.error("Hata oluştu", "Kayıt Başarısız");
           this.registerForm.reset();
         }
