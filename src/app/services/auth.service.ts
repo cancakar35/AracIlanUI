@@ -23,6 +23,10 @@ export class AuthService {
     return this.httpClient.post<AuthResponse>(this.api_url+"register", userRegisterDto);
   }
 
+  logout(){
+    this.localStorageService.removeToken();
+  }
+
   isAuthenticated() : boolean {
     return this.localStorageService.getToken() == null ? false : true;
   }

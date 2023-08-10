@@ -16,6 +16,7 @@ import { FiltreComponent } from './components/filtre/filtre.component';
 import { IlanDetailComponent } from './components/ilan-detail/ilan-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
     IlanDetailComponent,
     LoginComponent,
     RegisterComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,

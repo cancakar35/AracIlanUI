@@ -2,8 +2,22 @@
     <form [formGroup]="loginForm">
         <h2>Giriş Yap</h2>
         <input type="email" placeholder="Email" formControlName="email">
+        <div class="login-form-error-msg"
+            *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+            Lütfen geçerli bir email giriniz.
+        </div>
         <input type="password" placeholder="Parola" formControlName="password">
+        <div class="login-form-error-msg"
+            *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            <div *ngIf="loginForm.controls['password'].errors?.['required']">
+                Lütfen parolanızı yazın
+            </div>
+            <div *ngIf="loginForm.controls['password'].errors?.['minlength']">
+                Parola en az 8 karakter olmalıdır
+            </div>
+        </div>
         <button type="button" (click)="login()">Giriş Yap</button>
-        <div>Hesabınız yok mu?, <a routerLink="/register" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Kayıt Ol</a></div>
+        <div>Hesabınız yok mu?, <a routerLink="/register" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Kayıt Ol</a>
+        </div>
     </form>
 </div>

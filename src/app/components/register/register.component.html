@@ -2,9 +2,30 @@
     <form [formGroup]="registerForm">
         <h2>Kayıt Ol</h2>
         <input type="text" placeholder="Ad" formControlName="firstName">
+        <div class="register-form-error-msg"
+            *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+            Ad alanı zorunludur
+        </div>
         <input type="text" placeholder="Soyad" formControlName="lastName">
+        <div class="register-form-error-msg"
+            *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
+            Soyad alanı zorunludur
+        </div>
         <input type="email" placeholder="Email" formControlName="email">
+        <div class="register-form-error-msg"
+            *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+            Lütfen geçerli bir email giriniz.
+        </div>
         <input type="password" placeholder="Parola" formControlName="password">
+        <div class="register-form-error-msg"
+            *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+            <div *ngIf="registerForm.controls['password'].errors?.['required']">
+                Parola alanı zorunludur
+            </div>
+            <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+                Parola en az 8 karakter olmalıdır
+            </div>
+        </div>
         <button type="button" (click)="register()">Kayıt Ol</button>
         <div>Zaten hesabınız varsa, <a routerLink="/login" [queryParams]="nextUrl==null?{}:{next:nextUrl}">Giriş Yap</a></div>
     </form>

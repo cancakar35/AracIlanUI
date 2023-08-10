@@ -36,6 +36,21 @@
     border: 2px solid #6F61C0;
 }
 
+.register-form input.ng-invalid.ng-touched {
+    border: 2px solid #ff9494;
+}
+
+.register-form input.ng-valid.ng-dirty {
+    border: 2px solid #4bb543;
+}
+
+.register-form-error-msg {
+    color: #ff9494;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
 .register-form button {
     width: 100%;
     height: 50px;
