@@ -23,15 +23,6 @@ import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 
 
-export function jwtOptionsFactory(localStorageService:LocalStorageService) {
-  return {
-    tokenGetter: () => {
-      return localStorageService.getToken();
-    },
-    allowedDomains: ["localhost:44392"]
-  }
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,10 +46,12 @@ export function jwtOptionsFactory(localStorageService:LocalStorageService) {
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({
-      jwtOptionsProvider:{
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [LocalStorageService]
+      config:{
+        tokenGetter: () => {
+          return localStorage.getItem("token")
+        },
+        allowedDomains: ["localhost:44392"],
+        disallowedRoutes: ["localhost:44392/api/auth"]
       }
     })
   ],

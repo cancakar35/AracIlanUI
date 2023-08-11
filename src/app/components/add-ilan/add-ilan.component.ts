@@ -170,7 +170,6 @@ export class AddIlanComponent implements OnInit {
         next: (res)=>{},
         error: (err)=>{
           this.toastr.error("İşlem başarısız. Lütfen bilgileri kontrol edip tekrar deneyiniz.","HATA");
-          console.log(err);
         },
         complete: ()=>{
           this.router.navigate([""]);
