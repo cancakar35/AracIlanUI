@@ -12,12 +12,21 @@
                     aria-label="Search" />
             </form>
 
-            <div class="text-end">
+            <div class="text-end d-flex">
                 <ng-container *ngIf="isUserAuthenticated(); else notAuthenticatedView">
                     <div class="dropdown user-select-none" data-bs-theme="dark">
                         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person"></i>
+                            <i class="bi bi-plus fs-5 fw-bold"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li><button routerLink="/ilanlar/add" class="dropdown-item btn-lg">İlan Ekle</button></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown user-select-none" data-bs-theme="dark">
+                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person fs-5"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li class="px-2">
@@ -25,7 +34,8 @@
                                 <div *ngIf="userInfo" class="text-white text-center">{{userInfo.Name}}</div>
                             </li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><button class="dropdown-item btn-lg">Hesabım</button></li>
+                            <li><button class="dropdown-item">Hesabım</button></li>
+                            <li><button class="dropdown-item">İlanlarım</button></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <button (click)="logout()" type="button" class="btn btn-outline-warning d-block w-100">

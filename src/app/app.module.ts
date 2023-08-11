@@ -20,6 +20,7 @@ import { LocalStorageService } from "./services/local-storage.service";
 
 import { ToastrModule } from 'ngx-toastr';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 
 
 export function jwtOptionsFactory(localStorageService:LocalStorageService) {
@@ -27,7 +28,7 @@ export function jwtOptionsFactory(localStorageService:LocalStorageService) {
     tokenGetter: () => {
       return localStorageService.getToken();
     },
-    allowedDomains: ["example.com"],
+    allowedDomains: ["localhost:44392"]
   }
 }
 
@@ -43,6 +44,7 @@ export function jwtOptionsFactory(localStorageService:LocalStorageService) {
     LoginComponent,
     RegisterComponent,
     NavigationComponent,
+    AddIlanComponent,
   ],
   imports: [
     BrowserModule,

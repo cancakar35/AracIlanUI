@@ -29,13 +29,7 @@ export class IlanService {
     return this.httpClient.get<IlanResponseModel[]>(this.api_url+"getbykategori/"+kategoriId);
   }
 
-  addIlan(addIlanDto:AddIlanDTO, arac:Arac, files:File[]){
-    const formData = new FormData();
-    formData.append('addIlanDto', JSON.stringify(addIlanDto));
-    formData.append('arac', JSON.stringify(arac));
-    files.forEach(file => {
-      formData.append('files', file, file.name);
-    });
+  addIlan(formData:FormData){
     return this.httpClient.post(this.api_url+"add",formData);
   }
 

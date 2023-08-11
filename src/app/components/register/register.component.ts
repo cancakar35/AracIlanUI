@@ -50,14 +50,18 @@ export class RegisterComponent implements OnInit{
       this.authService.register(Object.assign({}, this.registerForm.value)).subscribe({
         next: response=>{
           this.isFormDisabled = true;
+          this.registerForm.disable();
           this.localStorageService.setToken(response.token);
-          this.toastr.success("Başarıyla kayıt oldunuz", "Kayıt Başarılı");
-          this.router.navigateByUrl(this.navigateUrl);
         },
         error: ()=>{
           this.isFormDisabled = false;
           this.toastr.error("Hata oluştu", "Kayıt Başarısız");
           this.registerForm.reset();
+          this.registerForm.enable();
+        },
+        complete: ()=>{
+          this.toastr.success("Başarıyla kayıt oldunuz", "Kayıt Başarılı");
+          this.router.navigateByUrl(this.navigateUrl);
         }
       })
     }

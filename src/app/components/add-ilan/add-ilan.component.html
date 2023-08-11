@@ -1,0 +1,94 @@
+<h1 class="fs-2 mb-5">Yeni İlan Ekle</h1>
+<div class="add-ilan-container">
+    <form enctype="multipart/form-data" [formGroup]="ilanForm">
+        <div formGroupName="arac" [style.display]="sectionNo==1?'block':'none'">
+            <label>Kategori</label>
+            <select (change)="onKategoriSelect()" formControlName="kategoriId">
+                <option class="placeholder-option" value="" selected disabled hidden>Kategori Seç</option>
+                <option *ngFor="let kategori of kategoriler" [value]="kategori.id">{{kategori.name}}</option>
+            </select>
+            <div [style.display]="is_kategoriSelected ? 'block' : 'none'">
+                <label>Durum</label>
+                <div class="arac-durum-radio-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" [value]="true" formControlName="sifir" id="sifirRadio" checked>
+                        <label class="form-check-label" for="sifirRadio">
+                            Sıfır
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" [value]="false" formControlName="sifir" id="ikinciElRadio">
+                        <label class="form-check-label" for="ikinciElRadio">
+                            İkinci El
+                        </label>
+                    </div>
+                </div>
+                <label>Marka</label>
+                <select formControlName="markaId">
+                    <option value="" selected disabled hidden>Marka Seç</option>
+                    <option *ngFor="let marka of markalar" [value]="marka.id">{{marka.name}}</option>
+                </select>
+                <label>Seri</label>
+                <input formControlName="seri" type="text" placeholder="Seri">
+                <label>Model</label>
+                <input formControlName="model" type="text" placeholder="Model Adı">
+                <label>Yıl</label>
+                <input formControlName="uretimYili" type="text" inputmode="numeric" placeholder="Üretim Yılı">
+                <label>Renk</label>
+                <select formControlName="renkId">
+                    <option value="" selected disabled hidden>Renk Seç</option>
+                    <option *ngFor="let renk of renkler" [value]="renk.id">{{renk.name}}</option>
+                </select>
+                <label>Kilometre</label>
+                <input formControlName="kilometre" type="number" inputmode="numeric" placeholder="Kilometre">
+                <label>Vites Tipi</label>
+                <select formControlName="vitesTipiId">
+                    <option value="" selected disabled hidden>Vites Tipi Seç</option>
+                    <option *ngFor="let vites of vitesler" [value]="vites.id">{{vites.name}}</option>
+                </select>
+                <label>Yakıt Tipi</label>
+                <select formControlName="yakitTipiId">
+                    <option value="" selected disabled hidden>Yakıt Tipi Seç</option>
+                    <option *ngFor="let yakit of yakitlar" [value]="yakit.id">{{yakit.name}}</option>
+                </select>
+                <label>Çekiş Tipi</label>
+                <select formControlName="cekisTipiId">
+                    <option value="" selected disabled hidden>Çekiş Tipi Seç</option>
+                    <option *ngFor="let cekis of cekisler" [value]="cekis.id">{{cekis.name}}</option>
+                </select>
+                <label>Kasa Tipi</label>
+                <select formControlName="kasaTipiId">
+                    <option value="" selected disabled hidden>Kasa Tipi Seç</option>
+                    <option *ngFor="let kasa of kasalar" [value]="kasa.id">{{kasa.name}}</option>
+                </select>
+                <label>Motor Gücü (hp)</label>
+                <input formControlName="motorGucuHP" type="number" inputmode="numeric" placeholder="Motor Gücü (hp)">
+                <label>Motor Hacmi (cc)</label>
+                <input formControlName="motorHacmiCC" type="number" inputmode="numeric" placeholder="Motor Hacmi (cc)">
+                <label>Araç Resimleri</label>
+                <div>
+                    <label for="ilanresim" class="add-ilan-arac-resim">
+                        <span>Resim Seç</span>
+                        <input (change)="handleFiles($event)" type="file" id="ilanresim" accept="image/png, image/jpeg, image/webp" multiple>
+                    </label>
+                    <span class="mx-3" *ngIf="carImages">{{carImages.length}} resim seçildi</span>
+                </div>
+                <label>FİYAT</label>
+                <input formControlName="fiyat" type="number" inputmode="numeric" step=".01" min="0" placeholder="Aracı satmak istediğiniz fiyatı giriniz">
+                <button (click)="nextSection()" class="btn btn-outline-primary btn-lg w-100"
+                    type="button">İleri</button>
+            </div>
+        </div>
+        <div formGroupName="ilan" [style.display]="sectionNo==2?'block':'none'">
+            <label>Adres Bilgileri</label>
+            <input formControlName="il" type="text" placeholder="İl">
+            <input formControlName="ilce" type="text" placeholder="İlçe">
+            <input formControlName="mahalle" type="text" placeholder="Mahalle">
+            <label>Telefon No</label>
+            <input formControlName="telefonNo" type="text" placeholder="Telefon Numarası">
+            <textarea formControlName="aciklama" placeholder="İlan Açıklaması"></textarea>
+            <button (click)="prevSection()" class="btn btn-outline-secondary btn-lg w-100 mb-2" type="button">Geri Dön</button>
+            <button (click)="submitNewIlan()" class="btn btn-outline-primary btn-lg w-100" type="button">ONAYLA</button>
+        </div>
+    </form>
+</div>

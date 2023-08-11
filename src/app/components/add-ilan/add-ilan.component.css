@@ -1,0 +1,69 @@
+.add-ilan-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.add-ilan-container form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.add-ilan-container input:not([type="radio"]),
+.add-ilan-container select,
+.add-ilan-container textarea {
+    outline: none;
+    width: 100%;
+    height: 44px;
+    border: 1px solid #e5e5e5;
+    padding: 8px 12px;
+    margin: 15px 0;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.add-ilan-container input:not([type="radio"]):focus,
+.add-ilan-container select:focus,
+.add-ilan-container textarea:focus {
+    border: 1px solid #6f61c0;
+}
+
+.add-ilan-container input::placeholder {
+    color: #777;
+    font-weight: 600;
+}
+
+.add-ilan-container input:not([type="radio"]).ng-invalid.ng-touched,
+.add-ilan-container select.ng-invalid.ng-touched,
+.add-ilan-container textarea.ng-invalid.ng-touched{
+    border: 2px solid #ff9494;
+}
+
+.arac-durum-radio-group {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.add-ilan-arac-resim {
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    background-color: #7986cb;
+    color: #fff;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.add-ilan-arac-resim input {
+    display: none;
+}
+
+.add-ilan-container textarea {
+    resize: none;
+    margin: 8px 0;
+    height: 150px;
+}

@@ -6,13 +6,15 @@ import { IlanDetailComponent } from './components/ilan-detail/ilan-detail.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 
 const routes: Routes = [
   {path:"", pathMatch: "full", component:HomeComponent},
   {path:"ilanlar", component:IlanListComponent},
   {path:"ilan/:ilanId", component:IlanDetailComponent},
   {path:"login", component:LoginComponent},
-  {path:"register", component:RegisterComponent}
+  {path:"register", component:RegisterComponent},
+  {path:"ilanlar/add", component:AddIlanComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

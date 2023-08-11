@@ -49,14 +49,18 @@ export class LoginComponent implements OnInit {
       this.authService.login(Object.assign({}, this.loginForm.value)).subscribe({
         next: response => {
           this.isFormDisabled = true;
+          this.loginForm.disable()
           this.localStorageService.setToken(response.token);
-          this.toastr.success("Başarıyla giriş yaptınız.", "Giriş Başarılı");
-          this.router.navigateByUrl(this.navigateUrl);
         },
         error: () => {
           this.isFormDisabled = false;
+          this.loginForm.enable()
           this.toastr.error("Kullanıcı adı veya parola hatalı", "HATA");
           this.loginForm.reset();
+        },
+        complete: () => {
+          this.toastr.success("Başarıyla giriş yaptınız.", "Giriş Başarılı");
+          this.router.navigateByUrl(this.navigateUrl);
         }
       })
     }
