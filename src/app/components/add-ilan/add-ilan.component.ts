@@ -161,20 +161,27 @@ export class AddIlanComponent implements OnInit {
   submitNewIlan() {
     if (this.ilanForm.valid && this.carImages != null && this.carImages.length > 0) {
       const formData = new FormData();
-      formData.append('addIlanDto', JSON.stringify(Object.assign({},this.ilanForm.get("ilan")?.value)));
-      formData.append('arac', JSON.stringify(Object.assign({id:0}, this.ilanForm.get("arac")?.value)));
+      const ilanBilgi = this.ilanForm.get("ilan")?.value;
+      const aracBilgi = this.ilanForm.get("arac")?.value;
+      for (const key in ilanBilgi) {
+        formData.append(key, ilanBilgi[key]);
+      }
+      for (const key in aracBilgi) {
+        formData.append(key, aracBilgi[key]);
+      }
       Array.from(this.carImages).forEach(file => {
         formData.append('files', file, file.name);
       });
       this.ilanService.addIlan(formData).subscribe({
-        next: (res)=>{},
-        error: (err)=>{
-          this.toastr.error("İşlem başarısız. Lütfen bilgileri kontrol edip tekrar deneyiniz.","HATA");
+        next: (res) => { },
+        error: (err) => {
+          this.toastr.error("İşlem başarısız. Lütfen bilgileri kontrol edip tekrar deneyiniz.", "HATA");
         },
-        complete: ()=>{
+        complete: () => {
+          this.toastr.success("İlan başarıyla eklendi", "Başarılı");
           this.router.navigate([""]);
         }
-      })
+      });
     }
     else {
       this.toastr.warning("Lütfen gerekli alanları doldurunuz.", "Uyarı");
