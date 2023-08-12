@@ -1,0 +1,75 @@
+.user-ilan-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.user-ilan-list-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    max-width: 546px;
+    user-select: none;
+    margin-bottom: 10px;
+}
+
+.user-ilan-list-card-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.user-ilan-list-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    width: 70%;
+    flex-shrink: 1;
+}
+
+.user-ilan-list-card-image {
+    cursor: pointer;
+    width: 30%;
+}
+
+.user-ilan-list-body-text {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.user-ilan-list-card-title {
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-ilan-list-card-date {
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+}
+
+.user-ilan-list-card-image img {
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.user-ilan-list-card-action button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    color: #ff9494;
+    width: 50px;
+}

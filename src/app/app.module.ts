@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserIlanListComponent } from './components/user-ilan-list/user-ilan-list.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     NavigationComponent,
     AddIlanComponent,
     UserProfileComponent,
+    UserIlanListComponent,
   ],
   imports: [
     BrowserModule,

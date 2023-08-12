@@ -29,6 +29,10 @@ export class IlanService {
     return this.httpClient.get<IlanResponseModel[]>(this.api_url+"getbykategori/"+kategoriId);
   }
 
+  getUserIlanList() : Observable<IlanResponseModel[]>{
+    return this.httpClient.get<IlanResponseModel[]>(this.api_url+"getuserilanlist");
+  }
+
   addIlan(formData:FormData){
     return this.httpClient.post(this.api_url+"add",formData);
   }

@@ -1,0 +1,40 @@
+<h1 class="fs-1 mt-0 mb-5">İlanlarım</h1>
+<div class="user-ilan-list-container" *ngIf="ilanlar.length">
+    <div *ngFor="let ilan of ilanlar" class="user-ilan-list-card">
+        <div class="user-ilan-list-card-row">
+            <div [routerLink]="'/ilan/' + ilan.ilan.id" class="user-ilan-list-card-image">
+                <img [src]="getImageURL(ilan.resimler[0])" class="rounded-start" alt="ilan-arac-resmi" />
+            </div>
+            <div class="user-ilan-list-card-body">
+                <div class="user-ilan-list-body-text" [routerLink]="'/ilan/' + ilan.ilan.id">
+                    <div class="user-ilan-list-card-title">
+                        {{ ilan.arac.marka }} {{ ilan.arac.model }}
+                    </div>
+                    <div class="user-ilan-list-card-date">{{ilan.ilan.tarih | date : "dd/MM/YYYYHH:m"}}
+                    </div>
+                </div>
+                <div class="user-ilan-list-card-action">
+                    <button (click)="handleRemoveIlanButton(ilan.ilan.id)" data-bs-toggle="modal" data-bs-target="#ilanremovemodal"><i class="bi bi-trash3"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="ilanlar.length" class="modal fade" id="ilanremovemodal" tabindex="-1" aria-labelledby="ilanremovemodal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="ilanremovemodal">İlan Kaldır</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          İlanın kaldırılmasını onaylıyor musunuz?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
+          <button (click)="removeSelectedIlan()" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Kaldır</button>
+        </div>
+      </div>
+    </div>
+</div>
+<h3>Henüz ilanınız bulunmuyor.</h3>
