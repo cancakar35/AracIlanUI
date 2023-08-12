@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:"", pathMatch: "full", component:HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:"ilan/:ilanId", component:IlanDetailComponent},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
-  {path:"ilanlar/add", component:AddIlanComponent, canActivate:[AuthGuard]}
+  {path:"ilanlar/add", component:AddIlanComponent, canActivate:[AuthGuard]},
+  {path:"profile", component:UserProfileComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

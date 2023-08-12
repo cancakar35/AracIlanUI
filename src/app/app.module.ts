@@ -21,6 +21,7 @@ import { LocalStorageService } from "./services/local-storage.service";
 import { ToastrModule } from 'ngx-toastr';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
     RegisterComponent,
     NavigationComponent,
     AddIlanComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
