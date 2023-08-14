@@ -1,0 +1,3 @@
+.form-control-dark.text-bg-dark::placeholder {
+    color: #999;
+}

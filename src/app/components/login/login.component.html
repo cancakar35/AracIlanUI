@@ -6,7 +6,7 @@
             *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
             Lütfen geçerli bir email giriniz.
         </div>
-        <input type="password" placeholder="Parola" formControlName="password">
+        <input (keydown.enter)="login()" type="password" placeholder="Parola" formControlName="password">
         <div class="login-form-error-msg"
             *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
             <div *ngIf="loginForm.controls['password'].errors?.['required']">

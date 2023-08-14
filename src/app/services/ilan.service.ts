@@ -33,6 +33,10 @@ export class IlanService {
     return this.httpClient.get<IlanResponseModel[]>(this.api_url+"getuserilanlist");
   }
 
+  getSearch(query:string) : Observable<IlanResponseModel[]>{
+    return this.httpClient.get<IlanResponseModel[]>(this.api_url+"search", {params:{search:query}});
+  }
+
   addIlan(formData:FormData){
     return this.httpClient.post(this.api_url+"add",formData);
   }

@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavigationComponent implements OnInit{
   userInfo!:UserInformation|null;
+  searchQuery:string = ""
   constructor(private authService:AuthService, private router:Router){}
 
   ngOnInit(): void {
@@ -27,6 +28,17 @@ export class NavigationComponent implements OnInit{
 
   async getUserInfo(){
     this.userInfo = await this.authService.getUserInformation();
+  }
+
+  search(){
+    if (this.searchQuery != ""){
+      this.router.navigate(["ilanlar"], {queryParams: {
+        q:this.searchQuery
+      }});
+    }
+    else {
+      this.router.navigate(["ilanlar"]);
+    }
   }
 
 }

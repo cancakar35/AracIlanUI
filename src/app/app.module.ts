@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,14 +15,15 @@ import { IlanDetailComponent } from './components/ilan-detail/ilan-detail.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { LocalStorageService } from "./services/local-storage.service";
-
-
-import { ToastrModule } from 'ngx-toastr';
-import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserIlanListComponent } from './components/user-ilan-list/user-ilan-list.component';
+import { environment } from 'src/environments/environment.development';
+
+
+import { ToastrModule } from 'ngx-toastr';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 @NgModule({
@@ -54,8 +55,8 @@ import { UserIlanListComponent } from './components/user-ilan-list/user-ilan-lis
         tokenGetter: () => {
           return localStorage.getItem("token")
         },
-        allowedDomains: ["localhost:44392"],
-        disallowedRoutes: ["localhost:44392/api/auth"]
+        allowedDomains: [environment.apiURL],
+        disallowedRoutes: [environment.apiURL+"auth/login", environment.apiURL+"auth/register"]
       }
     })
   ],

@@ -24,6 +24,9 @@ export class IlanComponent implements OnInit{
       if (params.keys.length == 1 && params.keys[0] == "kategori"){
         this.getByKategori(params.get("kategori")!);
       }
+      else if(params.keys.length == 1 && params.keys[0] == "q"){
+        this.getSearch(params.get("q")!);
+      }
       else if(params.keys.some(v=>["kategori","markaId","renkId","yakitTipiId","cekisTipiId","vitesTipiId","kasaTipiId"].includes(v))){
         let httpParams = new HttpParams();
         params.keys.forEach(key => {
@@ -47,6 +50,14 @@ export class IlanComponent implements OnInit{
 
   getAll(){
     this.ilanService.getAll().subscribe({
+      next:(data)=>this.ilanlar=data,
+      error:()=>this.toastr.error("İlanlar yüklenemedi", "HATA"),
+      complete: ()=>this.is_completed=true
+    });
+  }
+
+  getSearch(query:string){
+    this.ilanService.getSearch(query).subscribe({
       next:(data)=>this.ilanlar=data,
       error:()=>this.toastr.error("İlanlar yüklenemedi", "HATA"),
       complete: ()=>this.is_completed=true
