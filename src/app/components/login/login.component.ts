@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         next: response => {
           this.isFormDisabled = true;
           this.loginForm.disable()
-          this.localStorageService.setToken(response.token);
+          this.localStorageService.setToken(response.accessToken, response.refreshToken);
         },
         error: () => {
           this.isFormDisabled = false;

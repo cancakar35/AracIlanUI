@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit{
         next: response=>{
           this.isFormDisabled = true;
           this.registerForm.disable();
-          this.localStorageService.setToken(response.token);
+          this.localStorageService.setToken(response.accessToken, response.refreshToken);
         },
         error: ()=>{
           this.isFormDisabled = false;

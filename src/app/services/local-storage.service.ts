@@ -17,15 +17,17 @@ export class LocalStorageService {
     return localStorage.removeItem(key);
   }
 
-  getToken(){
+  getAccessToken(){
     return localStorage.getItem("token");
   }
 
-  setToken(token:string){
-    localStorage.setItem("token", token);
+  setToken(accessToken:string, refreshToken:string){
+    localStorage.setItem("token", accessToken);
+    localStorage.setItem("refresh", refreshToken);
   }
   
-  removeToken(){
+  removeTokens(){
     localStorage.removeItem("token");
+    localStorage.removeItem("refresh");
   }
 }
