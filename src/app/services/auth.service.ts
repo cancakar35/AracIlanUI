@@ -26,6 +26,10 @@ export class AuthService {
     return this.httpClient.post<AuthResponse>(this.api_url+"register", userRegisterDto);
   }
 
+  refresh(accessToken:string){
+    return this.httpClient.post<AuthResponse>(this.api_url+"refresh", {token:accessToken})
+  }
+
   logout(){
     this.localStorageService.removeToken();
   }
