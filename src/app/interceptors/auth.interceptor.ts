@@ -24,6 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const accessToken = this.localStorageService.getToken();
 
     if (accessToken){
+      request = request.clone({headers:request.headers.set("Authorization","Bearer "+accessToken), withCredentials:true});
       return next.handle(request).pipe(
         catchError(error=>{
           if (error.status === 401){
@@ -34,7 +35,8 @@ export class AuthInterceptor implements HttpInterceptor {
                   request = request.clone({
                     setHeaders: {
                       Authorization:"Bearer "+res.token
-                    }
+                    },
+                    withCredentials: true
                   });
                   return next.handle(request);
                 }
