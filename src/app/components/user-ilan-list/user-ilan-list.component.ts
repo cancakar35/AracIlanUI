@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IlanResponseModel } from 'src/app/models/ilan-response-model';
 import { IlanService } from 'src/app/services/ilan.service';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-ilan-list',

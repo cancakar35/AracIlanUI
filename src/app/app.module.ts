@@ -18,7 +18,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AddIlanComponent } from './components/add-ilan/add-ilan.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserIlanListComponent } from './components/user-ilan-list/user-ilan-list.component';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 
 import { ToastrModule } from 'ngx-toastr';

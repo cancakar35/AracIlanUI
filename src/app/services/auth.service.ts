@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserLogin } from '../models/user-login';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../models/auth-response-model';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { UserRegister } from '../models/user-register';
 import { LocalStorageService } from './local-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
