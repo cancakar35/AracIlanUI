@@ -1,1 +1,1 @@
-Angular App for AracIlanProject.
+# Live on [aracilan.cancakar.com.tr](aracilan.cancakar.com.tr)
