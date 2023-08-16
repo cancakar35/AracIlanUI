@@ -1,1 +1,1 @@
-# Live on [aracilan.cancakar.com.tr](aracilan.cancakar.com.tr)
+# Live on [https://aracilan.cancakar.com.tr](https://aracilan.cancakar.com.tr)
