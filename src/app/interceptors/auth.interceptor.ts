@@ -9,16 +9,14 @@ import {
 import { Observable, catchError, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthResponse } from '../models/auth-response-model';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService:AuthService,
     private localStorageService:LocalStorageService,
-    private router:Router, private toastr:ToastrService) {}
+    private toastr:ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.localStorageService.getToken();
@@ -52,7 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
       )
     }
     else {
-      return next.handle(request);
+      return next.handle(request.clone({withCredentials:true}));
     }
   }
 }
